@@ -11,7 +11,7 @@
 #
 class nagiosclient::params {
 
-  $package_name                        = 'nagios'
+  $package_name                        = 'nagios-client'
   $user                                = 'nagios'
   $group                               = 'nagios'
   $uid                                 = '240'

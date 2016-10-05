@@ -5,9 +5,9 @@
    "manifests/housekeeping.pp": "356fd5a18031a6218e08f253b593b144",
    "manifests/account.pp": "f37cdf1d2ea2e243da5a7deba728cab0",
    "manifests/install.pp": "54f4a83ee9bacd9f41617be516df8b16",
-   "manifests/params.pp": "3fdea8e12063ef9c44942ecd482e2670",
    "manifests/init.pp": "cf9dc14657ef29595412a531e343af2e",
    "manifests/service.pp": "609ed89cd26bda7694d7ebdca8b080bf",
    "manifests/config.pp": "c03339f408511c78825cf5e51dcc1115",
+   "manifests/params.pp": "fd613a1ad01ffb92335e3dbce90e640e",
    "README.md": "fdd6efca62b6e7a7a654c282ef5e96d1"
 }
