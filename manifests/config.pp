@@ -11,9 +11,9 @@
 #
 class nagiosclient::config (
   $package_name                        = $nagiosclient::params::package_name,
-  $user                                = $nagiosclient::params::user,
-  $group                               = $nagiosclient::params::group,
-  ) inherits rabbitclient::params {
+  $config_dir                          = $nagiosclient::params::config_dir,
+  $plugin_dir                          = $nagiosclient::params::plugin_dir
+  ) inherits nagiosclient::params {
 
   notify { "## --->>> Updating config files for: ${package_name}": }
 
@@ -24,16 +24,21 @@ class nagiosclient::config (
     }
 
   # With selinux, some nrpe plugins require additional rules to work
-  if $selinux and $::selinux_enforced {
-    selinux::audit2allow { 'nrpe':
-      source                           => "puppet:///modules/${module_name}/messages.nrpe",
-      }
-    }
+  #if $selinux and $::selinux_enforced {
+  #  selinux::audit2allow { 'nrpe':
+  #    source                           => "puppet:///modules/${module_name}/messages.nrpe",
+  #    }
+  #  }
 
-  # deploy the config files:
-  git::reposync { 'client_stuff':
-    source_url                         => 'http://192.168.249.38/webops/puppet-nagiosclient.git',
-    destination_dir                    => '/',
+  # put the command file for nrpe in place
+  file { "${config_dir}/nrpe.cfg":
+    ensure                             => file,
+    owner                              => 'root',
+    group                              => 'root',
+    mode                               => '0644',
+    replace                            => true,
+    source                             => "puppet:///modules/${module_name}/nrpe.cfg",
+    notify                             => Service['nrpe'],
     }
 
   }

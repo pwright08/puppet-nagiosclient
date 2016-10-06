@@ -17,6 +17,8 @@ class nagiosclient::params {
   $uid                                 = '240'
   $guid                                = '240'
   $home_dir                            = '/var/spool/nagios'
+  $config_dir                          = '/etc/nagios'
+  $plugin_dir                          = '/usr/lib64/nagios/plugins'
 
   }
 

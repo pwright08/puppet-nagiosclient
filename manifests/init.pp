@@ -15,6 +15,8 @@
 #     group                            = run as group
 #     uid                              = default uid/gid
 #     home_dir                         = nagios home directory
+#     config_dir                       = nagios config directory
+#     plugin_dir                       = nagios plugin directory
 #
 # ===========================
 #
@@ -36,7 +38,10 @@ class nagiosclient (
   $user                                = $nagiosclient::params::user,
   $group                               = $nagiosclient::params::group,
   $uid                                 = $nagiosclient::params::uid,
-  $home_dir                            = $nagiosclient::params::home_dir
+  $home_dir                            = $nagiosclient::params::home_dir,
+  $config_dir                          = $nagiosclient::params::config_dir,
+  $plugin_dir                          = $nagiosclient::params::plugin_dir
+
 
   ) inherits nagiosclient::params {
 
@@ -47,6 +52,7 @@ class nagiosclient (
     class { '::nagiosclient::install': } ->
     class { '::nagiosclient::housekeeping': } ->
     class { '::nagiosclient::config': } ->
+    class { '::nagiosclient::plugins': } ->
     class { '::nagiosclient::service': } ->
     anchor { 'nagiosclient::end': }
 
