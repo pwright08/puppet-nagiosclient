@@ -1,4 +1,4 @@
-# == Class nagiosclient::housekeeping
+# == Class nagiosclient::tidy
 # ===========================
 #
 #
@@ -9,14 +9,13 @@
 #
 # ===========================
 #
-class nagiosclient::housekeeping (
+class nagiosclient::tidy (
   $package_name                        = $nagiosclient::params::package_name
   ) inherits nagiosclient::params {
 
-  notify { "## --->>> housekeeping packages for: ${package_name}": }
+  notify { "## --->>> remove unwanted packages for: ${package_name}": }
 
-  $unwanted                            = ['samba-libs','samba-common','samba-client-libs','samba-client','samba-common-tools','samba-common-libs']
-  package { $unwanted:
+  package { 'samba-libs':
     ensure                             => purged,
     }
 

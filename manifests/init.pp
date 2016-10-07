@@ -49,7 +49,7 @@ class nagiosclient (
     anchor { 'nagiosclient::begin': } ->
     class { '::nagiosclient::account': } ->
     class { '::nagiosclient::install': } ->
-    class { '::nagiosclient::housekeeping': } ->
+    class { '::nagiosclient::tidy': } ->
     class { '::nagiosclient::config': } ->
     class { '::nagiosclient::plugins': } ->
     class { '::nagiosclient::service': } ->
