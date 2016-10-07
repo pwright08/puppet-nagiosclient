@@ -6,6 +6,7 @@
    "files/check_linux_stats.pl": "2a09bc01b7451b1b059ca288dc089430",
    "files/check_unix_mem_usage.pl": "4e003bd3342d9b24c24646421c93db00",
    "files/check_net_stat.pl": "9839cc7b11bc7aaa6dafad35bac9a042",
+   "files/check_mem.pl": "5bfd7c69ac3ee41448f373123482b168",
    "manifests/housekeeping.pp": "356fd5a18031a6218e08f253b593b144",
    "manifests/account.pp": "f37cdf1d2ea2e243da5a7deba728cab0",
    "manifests/install.pp": "54f4a83ee9bacd9f41617be516df8b16",
