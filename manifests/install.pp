@@ -16,12 +16,12 @@ class nagiosclient::install (
   notify { "## --->>> Installing plugins for package: ${package_name}":
   }
 
-  $plugins                             = ['nagios-plugins-all','nagios-plugins-check-updates','nagios-plugins-ifstatus','nagios-plugins-uptime','nagios-plugins-nrpe','nrpe']
-  package { $plugins:
+  $client_packages                     = ['nagios-plugins-all','nagios-plugins-check-updates','nagios-plugins-ifstatus','nagios-plugins-uptime','nagios-plugins-nrpe','nrpe']
+  package { $client_packages :
     ensure                             => latest,
     }
 
-  package { 'perl-Sys-Statistics-Linux.noarch':
+  package { 'perl-Sys-Statistics-Linux':
     ensure                             => 'installed',
     provider                           => 'rpm',
     source                             => "ftp://ftp.pbone.net/mirror/ftp5.gwdg.de/pub/opensuse/repositories/home:/csbuild:/Perl/CentOS_CentOS-6/noarch/perl-Sys-Statistics-Linux-0.66-1.1.noarch.rpm",

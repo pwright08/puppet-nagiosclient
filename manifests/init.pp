@@ -13,7 +13,8 @@
 #     package_name                     = the package name
 #     user                             = run as user
 #     group                            = run as group
-#     uid                              = default uid/gid
+#     userid                           = default uid
+#     grpuid                           = default gid
 #     home_dir                         = nagios home directory
 #     config_dir                       = nagios config directory
 #     plugin_dir                       = nagios plugin directory
@@ -37,7 +38,8 @@ class nagiosclient (
   $package_name                        = $nagiosclient::params::package_name,
   $user                                = $nagiosclient::params::user,
   $group                               = $nagiosclient::params::group,
-  $uid                                 = $nagiosclient::params::uid,
+  $userid                              = $nagiosclient::params::userid,
+  $grpuid                              = $nagiosclient::params::grpuid,
   $home_dir                            = $nagiosclient::params::home_dir,
   $config_dir                          = $nagiosclient::params::config_dir,
   $plugin_dir                          = $nagiosclient::params::plugin_dir

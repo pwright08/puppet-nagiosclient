@@ -24,7 +24,7 @@ class nagiosclient::plugins (
     group                              => 'root',
     mode                               => '0644',
     replace                            => true,
-    source                             => "puppet:///modules/${module_name}/check_unix_mem_usage.pl"
+    source                             => "puppet:///modules/nagiosclient/check_unix_mem_usage.pl"
     }
 
   file { "${plugin_dir}/check_net_stat.pl":
@@ -33,7 +33,7 @@ class nagiosclient::plugins (
     group                              => 'root',
     mode                               => '0644',
     replace                            => true,
-    source                             => "puppet:///modules/${module_name}/check_net_stat.pl"
+    source                             => "puppet:///modules/nagiosclient/check_net_stat.pl"
     }
 
   file { "${plugin_dir}/check_linux_stats.pl":
@@ -42,7 +42,16 @@ class nagiosclient::plugins (
     group                              => 'root',
     mode                               => '0644',
     replace                            => true,
-    source                             => "puppet:///modules/${module_name}/check_linux_stats.pl"
+    source                             => "puppet:///modules/nagiosclient/check_linux_stats.pl"
+    }
+
+  file { "${plugin_dir}/check_mem.pl":
+    ensure                             => file,
+    owner                              => 'root',
+    group                              => 'root',
+    mode                               => '0644',
+    replace                            => true,
+    source                             => "puppet:///modules/nagiosclient/check_mem.pl"
     }
 
   }
