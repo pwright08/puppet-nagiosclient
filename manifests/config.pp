@@ -37,11 +37,11 @@ class nagiosclient::config (
     group                              => 'root',
     mode                               => '0644',
     replace                            => true,
-    source                             => "puppet:///modules/${module_name}/nrpe.cfg",
+    source                             => "puppet:///modules/nagiosclient/nrpe.cfg",
     notify                             => Service['nrpe'],
     }
 
   }
 
 
-# via: set ts=2 sw=2 et :
+# vim: set ts=2 sw=2 et :

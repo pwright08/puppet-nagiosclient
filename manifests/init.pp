@@ -42,7 +42,6 @@ class nagiosclient (
   $config_dir                          = $nagiosclient::params::config_dir,
   $plugin_dir                          = $nagiosclient::params::plugin_dir
 
-
   ) inherits nagiosclient::params {
 
     notify { "## --->>> Installing and configuring ${package_name}": }
@@ -56,7 +55,7 @@ class nagiosclient (
     class { '::nagiosclient::service': } ->
     anchor { 'nagiosclient::end': }
 
-}
+  }
 
 
 # vim: set ts=2 sw=2 et :

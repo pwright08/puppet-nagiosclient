@@ -11,8 +11,8 @@
    "manifests/install.pp": "54f4a83ee9bacd9f41617be516df8b16",
    "manifests/service.pp": "609ed89cd26bda7694d7ebdca8b080bf",
    "manifests/params.pp": "aa6111a8f139cd3090e0253868378c74",
-   "manifests/config.pp": "dc9097a452dbe105f634d8b0ff5abd23",
    "manifests/plugins.pp": "1b2ca018f5113bbb153c5383ad27ae74",
-   "manifests/init.pp": "addf25f7a78ef9230ddac2e73ac4ef3a",
+   "manifests/config.pp": "20df031440b36b425c0871f2dbf43fb7",
+   "manifests/init.pp": "04af35de1dab15dda544e79cf9da16ca",
    "README.md": "fdd6efca62b6e7a7a654c282ef5e96d1"
 }
