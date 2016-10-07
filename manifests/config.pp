@@ -12,10 +12,10 @@
 class nagiosclient::config (
   $package_name                        = $nagiosclient::params::package_name,
   $config_dir                          = $nagiosclient::params::config_dir,
-  $plugin_dir                          = $nagiosclient::params::plugin_dir
+  $plugin_dir                          = $nagiosclient::params::plugin_dir,
   ) inherits nagiosclient::params {
 
-  notify { "## --->>> Updating config files for: ${package_name}": }
+  notify { "## --->>> Updating config files for: ${package_name} client": }
 
   exec { "fix_the_hostname_pants":
     command                            => "cat /etc/hosts | tr [:upper:] [:lower:] > /tmp/hh; mv -f /tmp/hh /etc/hosts",
