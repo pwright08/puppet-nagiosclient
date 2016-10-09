@@ -15,5 +15,6 @@
    "manifests/plugins.pp": "1313e316ca10526bab3659f53788f5b0",
    "manifests/config.pp": "4ebd74008a533228566fb2737018709b",
    "manifests/init.pp": "23ddc225fcc9bc26515971a0a40daaa0",
+   "tests/init.pp": "ca8a2c1b6df7d5b27fbb10733f27de96",
    "README.md": "fdd6efca62b6e7a7a654c282ef5e96d1"
 }
