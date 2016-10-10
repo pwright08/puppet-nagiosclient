@@ -15,11 +15,6 @@ class nagiosclient::service (
   
   notify { "## --->>> Configuring service for: ${package_name}": } ~>
 
-  service { 'nagios':
-    ensure                             => running,
-    enable                             => true,
-    }
-
   service { 'nrpe':
     ensure                             => running,
     enable                             => true,

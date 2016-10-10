@@ -50,7 +50,7 @@ class nagiosclient (
 
     anchor { 'nagiosclient::begin': } ->
     class { '::nagiosclient::account': } ->
-#   class { '::nagiosclient::install': } ->
+    class { '::nagiosclient::install': } ->
     class { '::nagiosclient::tidy': } ->
     class { '::nagiosclient::config': } ->
     class { '::nagiosclient::plugins': } ->
