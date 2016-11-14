@@ -18,6 +18,8 @@
 #     home_dir                         = nagios home directory
 #     config_dir                       = nagios config directory
 #     plugin_dir                       = nagios plugin directory
+#     nagios_server                    = the server url
+#     nagios_server_ip                 = the server ip
 #
 # ===========================
 #
@@ -42,7 +44,9 @@ class nagiosclient (
   $grpuid                              = $nagiosclient::params::grpuid,
   $home_dir                            = $nagiosclient::params::home_dir,
   $config_dir                          = $nagiosclient::params::config_dir,
-  $plugin_dir                          = $nagiosclient::params::plugin_dir
+  $plugin_dir                          = $nagiosclient::params::plugin_dir,
+  $nagios_server                       = $nagiosclient::params::nagios_server,
+  $nagios_server_ip                    = $nagiosclient::params::nagios_server_ip
 
   ) inherits nagiosclient::params {
 

@@ -18,8 +18,9 @@ class nagiosclient::params {
   $grpuid                              = '240'
   $home_dir                            = '/var/spool/nagios'
   $config_dir                          = '/etc/nagios'
-  $plugin_dir                          = '/usr/lib64/nagios/plugins'
-
+  $plugin_dir                          = hiera('nagios_plugin_dir')
+  $nagios_server                       = hiera('nagios_server_name')
+  $nagios_server_ip                    = hiera('nagios_server_ip')
   }
 
 
