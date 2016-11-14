@@ -1,4 +1,4 @@
-# == Class nagiosclient::install
+# == Class nagiosclient::c_install
 # ===========================
 #
 #
@@ -9,11 +9,11 @@
 #
 # ===========================
 #
-class nagiosclient::install (
-  $package_name                        = $nagiosclient::params::package_name
-  ) inherits nagiosclient::install {
+class nagiosclient::c_install (
+  $c_package_name                        = $nagiosclient::c_params::c_package_name
+  ) inherits nagiosclient::c_install {
 
-  notify { "## --->>> Installing plugins for package: ${package_name}":
+  notify { "## --->>> Installing plugins for package: ${c_package_name}":
   }
 
   $client_packages                     = ['nagios-plugins-all','nagios-plugins-check-updates','nagios-plugins-ifstatus','nagios-plugins-uptime','nagios-plugins-nrpe','nrpe']

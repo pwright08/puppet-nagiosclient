@@ -10,16 +10,16 @@
 # Document all Parameters:
 #
 #   Explanation of what this parameter affects and what it defaults to.
-#     package_name                     = the package name
-#     user                             = run as user
-#     group                            = run as group
-#     userid                           = default uid
-#     grpuid                           = default gid
-#     home_dir                         = nagios home directory
-#     config_dir                       = nagios config directory
-#     plugin_dir                       = nagios plugin directory
-#     nagios_server                    = the server url
-#     nagios_server_ip                 = the server ip
+#     c_package_name                     = the package name
+#     c_user                             = run as user
+#     c_group                            = run as group
+#     c_userid                           = default uid
+#     c_grpuid                           = default gid
+#     c_home_dir                         = nagios home directory
+#     c_config_dir                       = nagios config directory
+#     c_plugin_dir                       = nagios plugin directory
+#     c_nagios_server                    = the server url
+#     c_nagios_server_ip                 = the server ip
 #
 # ===========================
 #
@@ -37,28 +37,28 @@
 #
 #
 class nagiosclient (
-  $package_name                        = $nagiosclient::params::package_name,
-  $user                                = $nagiosclient::params::user,
-  $group                               = $nagiosclient::params::group,
-  $userid                              = $nagiosclient::params::userid,
-  $grpuid                              = $nagiosclient::params::grpuid,
-  $home_dir                            = $nagiosclient::params::home_dir,
-  $config_dir                          = $nagiosclient::params::config_dir,
-  $plugin_dir                          = $nagiosclient::params::plugin_dir,
-  $nagios_server                       = $nagiosclient::params::nagios_server,
-  $nagios_server_ip                    = $nagiosclient::params::nagios_server_ip
+  $c_package_name                        = $nagiosclient::c_params::c_package_name,
+  $c_user                                = $nagiosclient::c_params::c_user,
+  $c_group                               = $nagiosclient::c_params::c_group,
+  $c_userid                              = $nagiosclient::c_params::c_userid,
+  $c_grpuid                              = $nagiosclient::c_params::c_grpuid,
+  $c_home_dir                            = $nagiosclient::c_params::c_home_dir,
+  $c_config_dir                          = $nagiosclient::c_params::c_config_dir,
+  $c_plugin_dir                          = $nagiosclient::c_params::c_plugin_dir,
+  $c_nagios_server                       = $nagiosclient::c_params::c_nagios_server,
+  $c_nagios_server_ip                    = $nagiosclient::c_params::c_nagios_server_ip
 
-  ) inherits nagiosclient::params {
+  ) inherits nagiosclient::c_params {
 
-    notify { "## --->>> Installing and configuring ${package_name}": }
+    notify { "## --->>> Installing client ${package_name}": }
 
     anchor { 'nagiosclient::begin': } ->
-    class { '::nagiosclient::account': } ->
-    class { '::nagiosclient::install': } ->
-    class { '::nagiosclient::tidy': } ->
-    class { '::nagiosclient::config': } ->
-    class { '::nagiosclient::plugins': } ->
-    class { '::nagiosclient::service': } ->
+    class { '::nagiosclient::c_account': } ->
+    class { '::nagiosclient::c_install': } ->
+    class { '::nagiosclient::c_tidy': } ->
+    class { '::nagiosclient::c_config': } ->
+    class { '::nagiosclient::c_plugins': } ->
+    class { '::nagiosclient::c_service': } ->
     anchor { 'nagiosclient::end': }
 
   }

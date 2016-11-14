@@ -1,4 +1,4 @@
-# == Class nagiosclient::service
+# == Class nagiosclient::c_service
 # ===========================
 #
 #
@@ -9,11 +9,11 @@
 #
 # ===========================
 #
-class nagiosclient::service (
-  $package_name                        = $nagiosclient::params::package_name
-  ) inherits nagiosclient::params {
+class nagiosclient::c_service (
+  $c_package_name                        = $nagiosclient::c_params::c_package_name
+  ) inherits nagiosclient::c_params {
   
-  notify { "## --->>> Configuring service for: ${package_name}": } ~>
+  notify { "## --->>> Configuring client service for: ${c_package_name}": } ~>
 
   service { 'nrpe':
     ensure                             => running,
