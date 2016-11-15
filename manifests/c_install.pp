@@ -11,7 +11,7 @@
 #
 class nagiosclient::c_install (
   $c_package_name                        = $nagiosclient::c_params::c_package_name
-  ) inherits nagiosclient::c_install {
+  ){
 
   notify { "## --->>> Installing plugins for package: ${c_package_name}":
   }
