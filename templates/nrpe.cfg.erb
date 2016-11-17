@@ -1,9 +1,9 @@
 #############################################################################
 #
 #
-# NRPE Config File 
+# NRPE Config File
 # Written by: Addi
-# 
+#
 #
 #############################################################################
 
@@ -12,7 +12,7 @@ pid_file=/var/run/nrpe/nrpe.pid
 server_port=5666
 nrpe_user=nagios
 nrpe_group=nagios
-allowed_hosts=127.0.0.1,192.168.122.20
+allowed_hosts=127.0.0.1,<%= @c_nagios_server_ip %>
 dont_blame_nrpe=1
 allow_bash_command_substitution=0
 debug=0
@@ -47,4 +47,3 @@ command[check_linux_virt]=/usr/lib64/nagios/plugins/check_linux_stats.pl -T -w $
 command[check_linux_files]=/usr/lib64/nagios/plugins/check_linux_stats.pl -F -w 15000,950000 -c 25000,1200000
 command[check_linux_uptime]=/usr/lib64/nagios/plugins/check_linux_stats.pl -U
 command[check_linux_temp]=/usr/lib64/nagios/plugins/check_temp.sh -w 75 -c 99
-

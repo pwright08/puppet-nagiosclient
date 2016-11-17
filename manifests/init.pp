@@ -37,16 +37,16 @@
 #
 #
 class nagiosclient (
-  $c_package_name                        = $nagiosclient::c_params::c_package_name,
-  $c_user                                = $nagiosclient::c_params::c_user,
-  $c_group                               = $nagiosclient::c_params::c_group,
-  $c_userid                              = $nagiosclient::c_params::c_userid,
-  $c_grpuid                              = $nagiosclient::c_params::c_grpuid,
-  $c_home_dir                            = $nagiosclient::c_params::c_home_dir,
-  $c_config_dir                          = $nagiosclient::c_params::c_config_dir,
-  $c_plugin_dir                          = $nagiosclient::c_params::c_plugin_dir,
-  $c_nagios_server                       = $nagiosclient::c_params::c_nagios_server,
-  $c_nagios_server_ip                    = $nagiosclient::c_params::c_nagios_server_ip
+  $c_package_name     = $nagiosclient::c_params::c_package_name,
+  $c_user             = $nagiosclient::c_params::c_user,
+  $c_group            = $nagiosclient::c_params::c_group,
+  $c_userid           = $nagiosclient::c_params::c_userid,
+  $c_grpuid           = $nagiosclient::c_params::c_grpuid,
+  $c_home_dir         = $nagiosclient::c_params::c_home_dir,
+  $c_config_dir       = $nagiosclient::c_params::c_config_dir,
+  $c_plugin_dir       = $nagiosclient::c_params::c_plugin_dir,
+  $c_nagios_server    = $nagiosclient::c_params::c_nagios_server,
+  $c_nagios_server_ip = $nagiosclient::c_params::c_nagios_server_ip
 
   ) inherits nagiosclient::c_params {
 
@@ -60,6 +60,8 @@ class nagiosclient (
     class { '::nagiosclient::c_plugins': } ->
     class { '::nagiosclient::c_service': } ->
     anchor { 'nagiosclient::end': }
+
+    
 
   }
 
