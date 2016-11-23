@@ -18,7 +18,7 @@ class nagiosclient::c_params {
   $c_grpuid           = '997'
   $c_home_dir         = '/var/spool/nagios'
   $c_config_dir       = '/etc/nagios'
-  $c_plugin_dir       = '/var/lib64/nagios/plugins/'
+  $c_plugin_dir       = '/usr/lib64/nagios/plugins/'
   }
 
 
