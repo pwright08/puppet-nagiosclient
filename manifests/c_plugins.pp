@@ -10,10 +10,8 @@
 # ===========================
 #
 class nagiosclient::c_plugins (
-
   $c_package_name = $nagiosclient::c_params::c_package_name,
   $c_plugin_dir   = $nagiosclient::c_params::c_plugin_dir
-
   ){
 
   notify { "## --->>> Installing extra client plugins for package: ${c_package_name}":
