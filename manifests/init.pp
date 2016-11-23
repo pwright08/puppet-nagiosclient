@@ -10,16 +10,8 @@
 # Document all Parameters:
 #
 #   Explanation of what this parameter affects and what it defaults to.
-#     c_package_name                     = the package name
-#     c_user                             = run as user
-#     c_group                            = run as group
-#     c_userid                           = default uid
-#     c_grpuid                           = default gid
-#     c_home_dir                         = nagios home directory
-#     c_config_dir                       = nagios config directory
-#     c_plugin_dir                       = nagios plugin directory
-#     c_nagios_server                    = the server url
-#     c_nagios_server_ip                 = the server ip
+#
+#     c_nagios_server_ip                 = the nagios server ip
 #
 # ===========================
 #
@@ -37,32 +29,24 @@
 #
 #
 class nagiosclient (
-  $c_package_name                        = $nagiosclient::c_params::c_package_name,
-  $c_user                                = $nagiosclient::c_params::c_user,
-  $c_group                               = $nagiosclient::c_params::c_group,
-  $c_userid                              = $nagiosclient::c_params::c_userid,
-  $c_grpuid                              = $nagiosclient::c_params::c_grpuid,
-  $c_home_dir                            = $nagiosclient::c_params::c_home_dir,
-  $c_config_dir                          = $nagiosclient::c_params::c_config_dir,
-  $c_plugin_dir                          = $nagiosclient::c_params::c_plugin_dir,
-  $c_nagios_server                       = $nagiosclient::c_params::c_nagios_server,
-  $c_nagios_server_ip                    = $nagiosclient::c_params::c_nagios_server_ip
 
-  ) inherits nagiosclient::c_params {
+  $c_nagios_server_ip = $::ipaddress_eth1
 
-    notify { "## --->>> Installing client ${package_name}": }
+  ){
 
-    anchor { 'nagiosclient::begin': } ->
-    class { '::nagiosclient::c_account': } ->
-    class { '::nagiosclient::c_install': } ->
-    class { '::nagiosclient::c_tidy': } ->
-    class { '::nagiosclient::c_config': } ->
-    class { '::nagiosclient::c_plugins': } ->
-    class { '::nagiosclient::c_service': } ->
-    anchor { 'nagiosclient::end': }
+  include nagiosclient::c_params
 
-  }
+  notify { "## --->>> Installing client ${nagiosclient::c_params::package_name}": }
+
+  anchor { 'nagiosclient::begin': } ->
+  class { '::nagiosclient::c_account': } ->
+  class { '::nagiosclient::c_install': } ->
+  class { '::nagiosclient::c_config': } ->
+  class { '::nagiosclient::c_plugins': } ->
+  class { '::nagiosclient::c_service': } ->
+  anchor { 'nagiosclient::end': }
+
+}
 
 
 # vim: set ts=2 sw=2 et :
-  
