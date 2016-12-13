@@ -30,8 +30,6 @@
 #
 class nagiosclient (
 
-  $c_nagios_server_ip = $::ipaddress_eth1
-
   ){
 
   include nagiosclient::c_params
