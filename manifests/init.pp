@@ -1,50 +1,67 @@
-# == Class: nagiosclient
-# ===========================
+# Class nagiosclient
 #
+# This class will manage Nagios server installations
 #
-# Description of the Class:
+# Parameters:
+#  ['nagios_server'] - IP for the nagios server. Defaults = localhost
+#  ['nrpe_commands'] - Array of command lines to be added to nrpe.conf
 #
-#   Install and configure a Nagios server for WebOps monitoring
+# Example of an npre command: This will check that the service 'sshd' is running
 #
+#  command[check_sshd]=/usr/lib64/nagios/plugins/check_procs -c 1: -w 3: -C sshd
 #
-# Document all Parameters:
+# Requires:
+# - puppetlabs/stdlib
 #
-#   Explanation of what this parameter affects and what it defaults to.
+# Sample Usage:
 #
-#     c_nagios_server_ip                 = the nagios server ip
+#   include nagiosclient
 #
-# ===========================
+# Hiera Lookups:
 #
-#
-# == Authors
-# ----------
-#
-# Author: Addi <addi.abel@gmail.com>
-#
-#
-# == Copyright
-# ------------
-#
-# Copyright:  ©  2016  LR / Addi.
-#
-#
+# There are no heira lookups for this module as such (excluding parameter
+# overides). It should be noted that the module deals only with a baisc nagios
+# client installation and is designed to be used in conjunction with a profile
+# manifest that will configure the nagios resources.
+
 class nagiosclient (
 
-  ){
+  $nagios_server = 'localhost',
+  $nrpe_commands = ''
 
-  include nagiosclient::c_params
+  ) {
 
-  notify { "## --->>> Installing client ${nagiosclient::c_params::package_name}": }
+  include ::stdlib
 
-  anchor { 'nagiosclient::begin': } ->
-  class { '::nagiosclient::c_account': } ->
-  class { '::nagiosclient::c_install': } ->
-  class { '::nagiosclient::c_config': } ->
-  class { '::nagiosclient::c_plugins': } ->
-  class { '::nagiosclient::c_service': } ->
-  anchor { 'nagiosclient::end': }
+  # Install nagios client packages
+  $pkglist=['nrpe','openssl','nagios-plugins-nrpe','nagios-plugins-ping',
+            'nagios-plugins-load','nagios-plugins-users','nagios-plugins-disk',
+            'nagios-plugins-ssh','nagios-plugins-swap','nagios-plugins-procs']
+  ensure_packages($pkglist)
 
+  # Set nagios to read config from default puppet locatons
+  file { '/etc/nagios/nrpe.cfg':
+    content => template('nagiosclient/nrpe.cfg.erb'),
+    owner   => root,
+    group   => root,
+    mode    => '0664',
+    notify  => Service['nrpe'],
+    require => Package['nrpe']
+  }
+
+  # Ensure nrpe is runnning
+  service { 'nrpe':
+    ensure  =>'running',
+    require => Package['nrpe']
+  }
+
+  # Install mem_check plugin
+  file { '/usr/lib64/nagios/plugins/check_mem' :
+    ensure  => present,
+    content => file('nagiosclient/check_mem.pl'),
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0755',
+    require => Package['nagios-plugins-ping']
+  }
 }
-
-
-# vim: set ts=2 sw=2 et :

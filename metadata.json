@@ -1,0 +1,24 @@
+{
+  "name": "landregistry-nagiosclient",
+  "version": "0.0.1",
+  "author": "landregistry",
+  "summary": "Manages simple Nagios client installation",
+  "license": "MIT",
+  "source": "https://github.com/LandRegistry-Ops/puppet-nagiosclient",
+  "project_page": "https://github.com/LandRegistry-Ops/puppet-nagiosclient",
+  "issues_url": "https://github.com/LandRegistry-Ops/puppet-nagiosclient/issues",
+  "dependencies": [
+    {
+      "name": "puppetlabs-stdlib",
+      "version_requirement": ">= 1.0.0"
+    },
+  ],
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "RedHat",
+      "operatingsystemrelease": [
+        "7"
+      ]
+    }
+  ]
+}
