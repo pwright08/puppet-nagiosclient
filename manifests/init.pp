@@ -51,7 +51,8 @@ class nagiosclient (
 
   # Ensure nrpe is runnning
   service { 'nrpe':
-    ensure  =>'running',
+    ensure  => running,
+    enable  => true,
     require => Package['nrpe']
   }
 
