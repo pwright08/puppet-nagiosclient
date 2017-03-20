@@ -222,10 +222,12 @@ connection_timeout=300
 command[check_users]=/usr/lib64/nagios/plugins/check_users -w $ARG1$ -c $ARG2$
 command[check_load]=/usr/lib64/nagios/plugins/check_load -w $ARG1$ -c $ARG2$
 command[check_disk]=/usr/lib64/nagios/plugins/check_disk -w $ARG1$ -c $ARG2$ -p $ARG3$
-command[check_procs]=/usr/lib64/nagios/plugins/check_procs -w $ARG1$ -c $ARG2$ -s $ARG3$ -C ARG4$
+command[check_procs]=/usr/lib64/nagios/plugins/check_procs -w $ARG1$ -c $ARG2$ -s $ARG3$
+command[check_service_procs]=/usr/lib64/nagios/plugins/check_procs -w $ARG1$ -c $ARG2$ -a $ARG3$
 command[check_mem]=/usr/lib64/nagios/plugins/check_mem -f -C -w $ARG1$ -c $ARG2$
 command[check_swap]=/usr/lib64/nagios/plugins/check_swap -w $ARG1$ -c $ARG2$
 command[check_ssh]=/usr/lib64/nagios/plugins/check_ssh
+command[check_service_http]=/usr/lib64/nagios/plugins/check_http -I $ARG1$ -p $ARG2$ -e $ARG3$
 # Additional commands added via puppet
 <%- if @nrpe_commands != '' %>
 <%- @nrpe_commands.each do |command| -%>
