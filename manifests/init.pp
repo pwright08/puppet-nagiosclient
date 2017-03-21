@@ -37,7 +37,7 @@ class nagiosclient (
   $pkglist=['nrpe','openssl','nagios-plugins-nrpe','nagios-plugins-ping',
             'nagios-plugins-load','nagios-plugins-users','nagios-plugins-disk',
             'nagios-plugins-ssh','nagios-plugins-swap','nagios-plugins-procs',
-            'nagios-plugins-http']
+            'nagios-plugins-http','nagios-plugins-tcp']
   ensure_packages($pkglist)
 
   # Set nagios to read config from default puppet locatons
