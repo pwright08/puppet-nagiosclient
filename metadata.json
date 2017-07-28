@@ -1,6 +1,6 @@
 {
   "name": "landregistry-nagiosclient",
-  "version": "0.13.0",
+  "version": "0.13.1",
   "author": "landregistry",
   "summary": "Manages simple Nagios client installation",
   "license": "MIT",
