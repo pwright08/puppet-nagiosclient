@@ -227,7 +227,7 @@ command[check_service_procs]=/usr/lib64/nagios/plugins/check_procs -w $ARG1$ -c 
 command[check_mem]=/usr/lib64/nagios/plugins/check_mem -f -C -w $ARG1$ -c $ARG2$
 command[check_swap]=/usr/lib64/nagios/plugins/check_swap -w $ARG1$ -c $ARG2$
 command[check_ssh]=/usr/lib64/nagios/plugins/check_ssh
-command[check_service_http]=/usr/lib64/nagios/plugins/check_http -I $ARG1$ -p $ARG2$ -e $ARG3$
+command[check_service_http]=/usr/lib64/nagios/plugins/check_http -I $ARG1$ -u $ARG2$ -p $ARG3$ -e $ARG4$
 command[check_service_tcp]=/usr/lib64/nagios/plugins/check_tcp -H $ARG1$ -p $ARG2$
 # Additional commands added via puppet
 <%- if @nrpe_commands != '' %>
